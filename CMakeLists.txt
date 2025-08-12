@@ -9,18 +9,22 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # Importing the Libraries
+add_subdirectory(vendored/md4c/src EXCLUDE_FROM_ALL)
+
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/freetype EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/SDL_image EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
-set(BUILD_MD2HTML_EXECUTABLE OFF)
-add_subdirectory(vendored/md4c EXCLUDE_FROM_ALL)
-
 
 # Create executable target
 add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListener.cpp)
 
 # Linking to the Libraries
+
+## MD4C
+target_link_libraries(${PROJECT_NAME} PRIVATE md4c)
+target_link_libraries(${PROJECT_NAME} PRIVATE md4c-html)
+target_include_directories(${PROJECT_NAME} PRIVATE vendored/md4c/src)
 
 ## SDL3
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
@@ -43,9 +47,6 @@ target_compile_definitions(rmlui_backend_SDL_Renderer INTERFACE
 		RMLUI_SDL_VERSION_MAJOR=3
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_Renderer RmlUi::Debugger)
-
-## MD4C
-target_link_libraries(${PROJECT_NAME} PRIVATE md4c md4c-html)
 
 # Copy assets
 ## Adapted from https://github.com/Moros1138/pge-template-project/blob/fb5c4bf23ececd2cc9eee880fd8a2e7fa05c2ece/CMakeLists.txt#L271-L287
