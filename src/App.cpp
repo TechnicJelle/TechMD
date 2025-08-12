@@ -142,7 +142,7 @@ void App::Quit(SDL_AppResult result) const {
 }
 
 void App::SetViewerHTML(const std::string& newHtml) {
-	html = std::move(newHtml);
+	html = newHtml;
 	Rml::Element* viewer = rmlDocument->GetElementById("viewer");
 	viewer->SetInnerRML(html);
 }

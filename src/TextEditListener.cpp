@@ -40,5 +40,5 @@ void TextEditListener::ProcessEvent(Rml::Event& event) {
 		SDL_Log("MD4C HTML parse failed");
 	}
 
-	app->SetViewerHTML(std::move(finalHtml));
+	app->SetViewerHTML(finalHtml);
 }
