@@ -19,10 +19,9 @@ and then uses the amazing RmlUi library for rendering the HTML!
 
 ## Running
 
-1. Install `FreeType`
-2. Clone recursively
-3. `cmake -S . -B build -G Ninja`
-4. `cmake --build build --parallel`
+1. Clone recursively
+2. `cmake -S . -B build -G Ninja`
+3. `cmake --build build --parallel`
 
 ## Motivation
 

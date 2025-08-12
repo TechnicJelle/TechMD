@@ -13,3 +13,6 @@
 [submodule "vendored/cmark-gfm"]
 	path = vendored/cmark-gfm
 	url = https://github.com/github/cmark-gfm
+[submodule "vendored/freetype"]
+	path = vendored/freetype
+	url = https://github.com/freetype/freetype.git
