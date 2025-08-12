@@ -13,6 +13,8 @@ add_subdirectory(vendored/md4c/src EXCLUDE_FROM_ALL)
 
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/freetype EXCLUDE_FROM_ALL)
+add_library(Freetype::Freetype ALIAS freetype)
+
 add_subdirectory(vendored/SDL_image EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
 
