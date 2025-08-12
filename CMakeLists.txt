@@ -31,9 +31,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE vendored/md4c/src)
 ## SDL3
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
 
-## Freetype
-target_link_libraries(${PROJECT_NAME} PRIVATE freetype)
-
 ## SDL_image
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3_image::SDL3_image)
 
