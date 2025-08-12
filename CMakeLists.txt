@@ -8,18 +8,19 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
+# Create executable target
+add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListener.cpp)
+
 # Importing the Libraries
 add_subdirectory(vendored/md4c/src EXCLUDE_FROM_ALL)
-
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
+add_subdirectory(vendored/SDL_image EXCLUDE_FROM_ALL)
+
 add_subdirectory(vendored/freetype EXCLUDE_FROM_ALL)
 add_library(Freetype::Freetype ALIAS freetype)
 
-add_subdirectory(vendored/SDL_image EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
 
-# Create executable target
-add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListener.cpp)
 if(NOT MSVC)
 	# Disable Position Independent Execution 
 	target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
