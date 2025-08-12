@@ -18,3 +18,9 @@ and then uses the amazing RmlUi library for rendering the HTML!
 1. Clone recursively
 2. `cmake -S . -B build -G Ninja`
 3. `cmake --build build --parallel`
+
+## Motivation
+
+I tried many Markdown file editors, but none worked very well.
+
+I started keeping a list here: https://gist.github.com/TechnicJelle/9d8e88b90e0834acbfe0938a909228bd
