@@ -20,6 +20,10 @@ add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
 
 # Create executable target
 add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListener.cpp)
+if(NOT MSVC)
+	# Disable Position Independent Execution 
+	target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
+endif()
 
 # Linking to the Libraries
 
