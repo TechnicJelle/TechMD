@@ -25,6 +25,11 @@ void TextEditListener::ProcessEvent(Rml::Event& event) {
 						html->append("<br />");
 						return;
 					}
+					if (outputView.starts_with("<img") && outputView.ends_with(">") && !outputView.ends_with("/>")) {
+						html->append(outputView.substr(0, outputView.size() - 1));
+						html->append(" />");
+						return;
+					}
 					html->append(outputView);
 					if (outputView == "<li>") {
 						html->append("• ");
