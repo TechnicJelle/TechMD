@@ -1,6 +1,28 @@
-#include <iostream>
+// SDL3
+#define SDL_MAIN_USE_CALLBACKS
+#include <SDL3/SDL_main.h>
 
-int main() {
-	std::cout << "Hello, World!" << std::endl;
-	return 0;
+// Project
+#include "App.hpp"
+
+SDL_AppResult SDL_AppInit(void** appstate, [[maybe_unused]] int argc, [[maybe_unused]] char* argv[]) {
+	App* app = new App();
+	*appstate = app;
+	return app->Init(1280, 720);
+}
+
+SDL_AppResult SDL_AppEvent(void* appstate, SDL_Event* event) {
+	const App* app = static_cast<App*>(appstate);
+	return app->Event(event);
+}
+
+SDL_AppResult SDL_AppIterate(void* appstate) {
+	const App* app = static_cast<App*>(appstate);
+	return app->Iterate();
+}
+
+void SDL_AppQuit(void* appstate, SDL_AppResult result) {
+	const App* app = static_cast<App*>(appstate);
+	app->Quit(result);
+	delete app;
 }

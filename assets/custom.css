@@ -1,0 +1,51 @@
+hr {
+	border-color: black;
+}
+
+a {
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+[align="center"] {
+	text-align: center;
+}
+
+pre {
+	font-family: "JetBrains Mono";
+	background-color: #AAA;
+	padding: 0.5em 0.8em;
+	border-radius: 4px;
+	margin: 1.12em 0;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+li {
+	display: block;
+	margin-left: 1em;
+}
+
+blockquote {
+	display: block;
+	padding-left: 1em;
+	border-left: 4px #555;
+	margin: 1.12em 0;
+}
+
+blockquote p {
+	display: inline;
+}

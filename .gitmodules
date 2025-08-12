@@ -1,0 +1,15 @@
+[submodule "vendored/SDL"]
+	path = vendored/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "vendored/RmlUi"]
+	path = vendored/RmlUi
+	url = https://github.com/mikke89/RmlUi.git
+[submodule "vendored/SDL_image"]
+	path = vendored/SDL_image
+	url = https://github.com/libsdl-org/SDL_image.git
+[submodule "vendored/md4c"]
+	path = vendored/md4c
+	url = https://github.com/mity/md4c.git
+[submodule "vendored/cmark-gfm"]
+	path = vendored/cmark-gfm
+	url = https://github.com/github/cmark-gfm
