@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.28)
 project(TechMD)
 
+set(CMAKE_CXX_STANDARD 23)
 
 # Set the output directory for built objects.
 # This makes sure that the dynamic library goes into the build directory automatically.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
-
 
 # Importing the Libraries
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
@@ -19,11 +19,6 @@ add_subdirectory(vendored/md4c EXCLUDE_FROM_ALL)
 
 # Create executable target
 add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListener.cpp)
-
-
-# Set C++ version
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
-
 
 # Linking to the Libraries
 
