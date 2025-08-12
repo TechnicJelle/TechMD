@@ -11,7 +11,8 @@
 #include "App.hpp"
 
 void TextEditListener::ProcessEvent(Rml::Event& event) {
-	const Rml::String mdText = event.GetTargetElement()->GetInnerRML();
+	const Rml::ElementFormControlTextArea* textarea = dynamic_cast<Rml::ElementFormControlTextArea*>(event.GetTargetElement());
+	const Rml::String mdText = textarea->GetValue();
 
 	constexpr unsigned parserFlags = MD_DIALECT_GITHUB;
 	constexpr unsigned rendererFlags = MD_HTML_FLAG_XHTML | MD_HTML_FLAG_SKIP_UTF8_BOM;

@@ -5,10 +5,16 @@
 // Project
 #include "App.hpp"
 
-SDL_AppResult SDL_AppInit(void** appstate, [[maybe_unused]] int argc, [[maybe_unused]] char* argv[]) {
+SDL_AppResult SDL_AppInit(void** appstate, [[maybe_unused]] const int argc, [[maybe_unused]] char* argv[]) {
 	App* app = new App();
 	*appstate = app;
-	return app->Init(1280, 720);
+
+	std::filesystem::path filepathToOpen;
+	if (argc > 1) {
+		filepathToOpen = argv[1];
+	}
+
+	return app->Init(1280, 720, std::move(filepathToOpen));
 }
 
 SDL_AppResult SDL_AppEvent(void* appstate, SDL_Event* event) {

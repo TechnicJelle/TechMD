@@ -5,10 +5,14 @@
 #include <RmlUi_Platform_SDL.h>
 #include <RmlUi_Renderer_SDL.h>
 
+// C++
+#include <filesystem>
+
 // Project
 #include "TextEditListener.hpp"
 
 class App {
+	std::string appDirectory{};
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	RenderInterface_SDL* rmlRenderInterface = nullptr;
@@ -20,12 +24,12 @@ class App {
 
 private:
 	/// Returns true if the fonts were loaded successfully.
-	static bool LoadFonts();
+	bool LoadFonts() const;
 
 	void DumpHTML() const;
 
 public:
-	[[nodiscard]] SDL_AppResult Init(int width, int height);
+	[[nodiscard]] SDL_AppResult Init(int width, int height, const std::filesystem::path& filepathToOpen);
 
 	[[nodiscard]] SDL_AppResult Event(SDL_Event* event) const;
 

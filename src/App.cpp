@@ -3,9 +3,9 @@
 // RmlUi
 #include <RmlUi/Debugger.h>
 
-bool App::LoadFonts() {
+bool App::LoadFonts() const {
 	int count{};
-	const std::string font_dir = "assets/fonts/";
+	const std::string font_dir = appDirectory + "assets/fonts/";
 	char** const& font_files = SDL_GlobDirectory(font_dir.c_str(), "**/*.?tf", SDL_GLOB_CASEINSENSITIVE, &count);
 	if (count <= 0) {
 		SDL_Log("No font files found in assets/fonts");
@@ -25,7 +25,9 @@ void App::DumpHTML() const {
 	SDL_Log("---\n%s", html.c_str());
 }
 
-SDL_AppResult App::Init(int width, int height) {
+SDL_AppResult App::Init(const int width, const int height, const std::filesystem::path& filepathToOpen) {
+	appDirectory = SDL_GetBasePath();
+
 	SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "1");
 	if (constexpr SDL_WindowFlags flags = SDL_WINDOW_RESIZABLE;
 		!SDL_CreateWindowAndRenderer("Tech's Markdown File Viewer/Editor", width, height, flags, &window, &renderer)
@@ -62,13 +64,29 @@ SDL_AppResult App::Init(int width, int height) {
 		return SDL_APP_FAILURE;
 	}
 
-	rmlDocument = rmlContext->LoadDocument("assets/ui.html");
+	//BUG: All Markdown images are loaded from the appDirectory too, which is bad.
+	// Those should be loaded from the current working directory instead.
+	rmlDocument = rmlContext->LoadDocument(appDirectory + "assets/ui.html");
 	if (rmlDocument)
 		rmlDocument->Show();
 
 	eventListener = new TextEditListener(this);
-	Rml::Element* textarea = rmlDocument->GetElementById("editor");
+	Rml::ElementFormControlTextArea* textarea = dynamic_cast<Rml::ElementFormControlTextArea*>(rmlDocument->GetElementById("editor"));
 	textarea->AddEventListener(Rml::EventId::Change, eventListener);
+
+	if (!filepathToOpen.empty()) {
+		if (!exists(filepathToOpen)) {
+			SDL_Log("File '%s' does not exist.", filepathToOpen.string().c_str());
+			return SDL_APP_FAILURE;
+		}
+		if (void* contents = SDL_LoadFile(filepathToOpen.string().c_str(), nullptr)) {
+			const std::string markdown(static_cast<const char*>(contents));
+			textarea->SetValue(markdown); //BUG: This does not refresh the screen. You have to type something in the textarea to see it.
+			SDL_free(contents);
+		} else {
+			SDL_Log("Failed to load file '%s': %s", filepathToOpen.string().c_str(), SDL_GetError());
+		}
+	}
 
 	return SDL_APP_CONTINUE;
 }
