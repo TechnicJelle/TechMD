@@ -22,7 +22,7 @@ and then uses the amazing RmlUi library for rendering the HTML!
 1. Clone recursively
 2. `cmake -S . -B build -G Ninja`
 3. `cmake --build build --parallel`
-
+ 
 ## Motivation
 
 I tried many Markdown file editors, but none worked very well.
