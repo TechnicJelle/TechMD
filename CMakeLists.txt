@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.28)
 project(TechMD)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Set the output directory for built objects.
 # This makes sure that the dynamic library goes into the build directory automatically.
@@ -20,11 +21,6 @@ add_subdirectory(vendored/freetype EXCLUDE_FROM_ALL)
 add_library(Freetype::Freetype ALIAS freetype)
 
 add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
-
-if(NOT MSVC)
-	# Disable Position Independent Execution 
-	target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
-endif()
 
 # Linking to the Libraries
 
