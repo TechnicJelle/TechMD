@@ -16,6 +16,11 @@ add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListen
 add_subdirectory(vendored/md4c/src EXCLUDE_FROM_ALL)
 add_subdirectory(vendored/SDL EXCLUDE_FROM_ALL)
 
+add_subdirectory(vendored/freetype EXCLUDE_FROM_ALL)
+add_library(Freetype::Freetype ALIAS freetype)
+
+add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
+
 set(SDLIMAGE_BACKEND_STB OFF)
 set(SDLIMAGE_AVIF OFF)
 set(SDLIMAGE_BMP ON)
@@ -35,11 +40,6 @@ set(SDLIMAGE_XCF OFF)
 set(SDLIMAGE_XPM OFF)
 set(SDLIMAGE_XV OFF)
 add_subdirectory(vendored/SDL_image EXCLUDE_FROM_ALL)
-
-add_subdirectory(vendored/freetype EXCLUDE_FROM_ALL)
-add_library(Freetype::Freetype ALIAS freetype)
-
-add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
 
 # Linking to the Libraries
 
