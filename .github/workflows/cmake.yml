@@ -20,11 +20,11 @@ jobs:
         build_type: [ Release ]
         include:
             #set other variables on all the matrix possibilities
-          - os: windows-latest
+          - os: windows-2025
             c_compiler: cl
             cpp_compiler: cl
             generator: Visual Studio 17 2022
-          - os: windows-latest
+          - os: windows-2025
             c_compiler: gcc
             cpp_compiler: g++
             generator: Ninja
@@ -46,7 +46,7 @@ jobs:
             generator: Ninja
         exclude:
             #don't try clang on windows
-          - os: windows-latest
+          - os: windows-2025
             c_compiler: clang
             #don't try cl on ubuntu and macos
           - os: ubuntu-latest
