@@ -4,8 +4,8 @@
 #include <SDL3/SDL.h>
 
 // MD4C
-#include "../vendored/md4c/src/md4c.h"
-#include "../vendored/md4c/src/md4c-html.h"
+#include "md4c.h"
+#include "md4c-html.h"
 
 // Project
 #include "App.hpp"
