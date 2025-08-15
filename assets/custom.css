@@ -13,6 +13,17 @@ a:hover {
 	cursor: pointer;
 }
 
+button {
+	color: #FFF;
+	background-color: #555;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: #777;
+}
+
 img {
 	max-width: 100%;
 	height: auto;

@@ -10,7 +10,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # Create executable target
-add_executable(${PROJECT_NAME} WIN32 src/main.cpp src/App.cpp src/TextEditListener.cpp)
+add_executable(${PROJECT_NAME} WIN32
+		src/main.cpp
+		src/App.cpp
+		src/ClickListener.cpp
+		src/TextEditListener.cpp
+)
 
 # Importing the Libraries
 add_subdirectory(vendored/md4c/src EXCLUDE_FROM_ALL)

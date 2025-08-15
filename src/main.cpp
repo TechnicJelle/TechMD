@@ -9,16 +9,16 @@ SDL_AppResult SDL_AppInit(void** appstate, [[maybe_unused]] const int argc, [[ma
 	App* app = new App();
 	*appstate = app;
 
-	std::filesystem::path filepathToOpen;
+	std::optional<std::filesystem::path> filepathToOpen;
 	if (argc > 1) {
 		filepathToOpen = argv[1];
 	}
 
-	return app->Init(1280, 720, std::move(filepathToOpen));
+	return app->Init(1280, 720, filepathToOpen);
 }
 
 SDL_AppResult SDL_AppEvent(void* appstate, SDL_Event* event) {
-	const App* app = static_cast<App*>(appstate);
+	App* app = static_cast<App*>(appstate);
 	return app->Event(event);
 }
 

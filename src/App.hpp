@@ -9,6 +9,7 @@
 #include <filesystem>
 
 // Project
+#include "ClickListener.hpp"
 #include "TextEditListener.hpp"
 
 class App {
@@ -19,24 +20,41 @@ class App {
 	SystemInterface_SDL* rmlSystemInterface = nullptr;
 	Rml::Context* rmlContext = nullptr;
 	Rml::ElementDocument* rmlDocument = nullptr;
-	TextEditListener* eventListener = nullptr;
+	ClickListener* clickListener = nullptr;
+	TextEditListener* textEditListener = nullptr;
 	std::string html{};
+	std::optional<std::filesystem::path> openFile{};
+	bool unsavedChanges = false;
 
 private:
 	/// Returns true if the fonts were loaded successfully.
-	bool LoadFonts() const;
+	[[nodiscard]] bool LoadFonts() const;
 
 	void DumpHTML() const;
 
-public:
-	[[nodiscard]] SDL_AppResult Init(int width, int height, const std::filesystem::path& filepathToOpen);
+	[[nodiscard]] SDL_AppResult TryClose();
 
-	[[nodiscard]] SDL_AppResult Event(SDL_Event* event) const;
+	void OpenFile(const std::filesystem::path& filepathToOpen);
+
+	void SaveFile(const std::filesystem::path& filepathToSave);
+
+	void SetViewerHTML(const std::string& newHtml);
+
+public:
+	[[nodiscard]] SDL_AppResult Init(int width, int height, const std::optional<std::filesystem::path>& filepathToOpen);
+
+	[[nodiscard]] SDL_AppResult Event(SDL_Event* event);
 
 	[[nodiscard]] SDL_AppResult Iterate() const;
 
 	void Quit(SDL_AppResult result) const;
 
 public:
-	void SetViewerHTML(const std::string& newHtml);
+	void SetUnsavedChanges(bool newValue);
+
+	void SetViewerMarkdown(const std::string& newMarkdown);
+
+	void OpenFileDialog();
+
+	void SaveOpenFile();
 };

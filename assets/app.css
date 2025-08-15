@@ -21,9 +21,19 @@ html, body {
 
 #toolbar {
 	background-color: #123456;
-	padding: 1em;
+	padding: 0.5em 1em;
 	display: flex;
 	gap: 1em;
+	align-items: center;
+}
+
+#toolbar p {
+	margin: 0;
+	color: white;
+}
+
+.flex-spacer {
+	flex-grow: 1;
 }
 
 .flex {
