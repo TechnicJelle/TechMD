@@ -21,7 +21,6 @@ add_library(Freetype::Freetype ALIAS freetype)
 
 add_subdirectory(vendored/RmlUi EXCLUDE_FROM_ALL)
 
-set(SDLIMAGE_VENDORED ON)
 set(SDLIMAGE_BACKEND_STB OFF)
 set(SDLIMAGE_AVIF OFF)
 set(SDLIMAGE_BMP ON)
