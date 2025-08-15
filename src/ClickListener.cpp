@@ -11,4 +11,12 @@ void ClickListener::ProcessEvent(Rml::Event& event) {
 	} else if (id == "toolbar_save") {
 		app->SaveOpenFile();
 	}
+
+	if (const std::string& tagName = element->GetTagName();
+		tagName == "a") {
+		const Rml::String href = element->GetAttribute<Rml::String>("href", "");
+		if (!href.empty() && href != "#" && !href.starts_with("javascript:")) {
+			SDL_OpenURL(href.c_str());
+		}
+	}
 }
