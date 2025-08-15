@@ -67,13 +67,24 @@ target_compile_definitions(rmlui_backend_SDL_Renderer INTERFACE
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE RmlUi::RmlUi rmlui_backend_SDL_Renderer RmlUi::Debugger)
 
-# Copy Assets
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/assets")
-	add_custom_command(
-		TARGET ${PROJECT_NAME}
-		POST_BUILD
-		COMMAND ${CMAKE_COMMAND}
-		ARGS -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/assets
-	)
-endif()
+# Copy assets
+## Adapted from https://github.com/Moros1138/pge-template-project/blob/fb5c4bf23ececd2cc9eee880fd8a2e7fa05c2ece/CMakeLists.txt#L271-L287
+set(ASSETS_DIR "assets")
+set(SOURCE_ASSETS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${ASSETS_DIR})
+set(ASSETS_OUTPUT_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ASSETS_DIR})
 
+file(GLOB_RECURSE src_assets_files
+		RELATIVE ${SOURCE_ASSETS_DIR}/
+		"${SOURCE_ASSETS_DIR}/*.*" "${SOURCE_ASSETS_DIR}/*")
+foreach (fn ${src_assets_files})
+	set(out_f ${ASSETS_OUTPUT_DIR}/${fn})
+	add_custom_command(
+			OUTPUT ${out_f}
+			COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_ASSETS_DIR}/${fn} ${out_f}
+			MAIN_DEPENDENCY ${SOURCE_ASSETS_DIR}/${fn}
+	)
+	list(APPEND out_assets_files ${out_f})
+endforeach ()
+
+add_custom_target(copy_assets DEPENDS ${out_assets_files})
+add_dependencies(${PROJECT_NAME} copy_assets)
