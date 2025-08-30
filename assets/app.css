@@ -42,13 +42,25 @@ html, body {
 	display: flex;
 }
 
+@media (orientation: portrait) {
+	.flex {
+		flex-direction: column;
+	}
+}
+
 .flex > * {
 	flex: 1;
+}
+
+#viewport {
+	height: 100%;
 }
 
 #editor {
 	cursor: text;
 	padding: 1em;
+
+	overflow: hidden auto;
 }
 
 #divider {
@@ -59,10 +71,6 @@ html, body {
 #viewer {
 	padding: 1em;
 	background-color: #EEE;
-}
 
-@media (orientation: portrait) {
-	.flex {
-		flex-direction: column;
-	}
+	overflow: hidden auto;
 }

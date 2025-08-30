@@ -5,7 +5,27 @@
     <mapping directory="$PROJECT_DIR$/vendored/RmlUi" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vendored/SDL" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vendored/SDL_image" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/aom" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/dav1d" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/jpeg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libavif" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/testdata" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/brotli" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/googletest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/highway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/lcms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/libpng" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/sjpeg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/skcms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libjxl/third_party/zlib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libpng" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libtiff" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/libwebp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/SDL_image/external/zlib" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vendored/cmark-gfm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/freetype" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendored/freetype/subprojects/dlg" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vendored/md4c" vcs="Git" />
   </component>
 </project>

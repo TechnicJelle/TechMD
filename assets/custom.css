@@ -60,3 +60,53 @@ blockquote {
 blockquote p {
 	display: inline;
 }
+
+/* Scrollbar Shared Styles */
+scrollbarvertical,
+scrollbarhorizontal {
+	cursor: arrow;
+}
+
+scrollbarvertical slidertrack,
+scrollbarhorizontal slidertrack {
+	background: #eee;
+}
+
+scrollbarvertical slidertrack:active,
+scrollbarhorizontal slidertrack:active {
+	background: #ddd;
+}
+
+scrollbarvertical sliderbar,
+scrollbarhorizontal sliderbar {
+	background: #aaa;
+}
+
+scrollbarvertical sliderbar:hover,
+scrollbarhorizontal sliderbar:hover {
+	background: #888;
+}
+
+scrollbarvertical sliderbar:active,
+scrollbarhorizontal sliderbar:active {
+	background: #666;
+}
+
+/* Scrollbar Sizes */
+scrollbarvertical {
+	width: 15px;
+}
+
+scrollbarhorizontal {
+	height: 15px;
+}
+
+scrollbarhorizontal sliderbar {
+	width: 15px;
+	min-height: 30px;
+}
+
+scrollbarhorizontal sliderbar {
+	height: 15px;
+	min-width: 30px;
+}
