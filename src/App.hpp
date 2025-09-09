@@ -7,6 +7,7 @@
 
 // C++
 #include <filesystem>
+#include <optional>
 
 // Project
 #include "ClickListener.hpp"
