@@ -234,6 +234,10 @@ SDL_AppResult App::Event(SDL_Event* event) {
 		case SDL_EVENT_QUIT:
 			return TryClose();
 
+		case SDL_EVENT_DROP_FILE:
+			OpenFile(event->drop.data);
+			break;
+
 		default: break;
 	}
 
